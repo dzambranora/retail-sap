@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>INFRA - Material de apoyo SAP</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -13,56 +12,39 @@
     --orange-dark: #D4640F;
     --blue: #1B3A6B;
     --blue-dark: #142d54;
+    --blue-mid: #2E5FA3;
     --bg: #F5F5F5;
     --bg-card: #FFFFFF;
     --border: rgba(0,0,0,0.10);
-    --text-primary: #1a1a1a;
-    --text-secondary: #555;
-    --text-muted: #999;
+    --font: 'IBM Plex Sans', sans-serif;
     --radius-md: 8px;
     --radius-lg: 12px;
-    --font: 'IBM Plex Sans', sans-serif;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--text-primary); }
-
+  html, body { height: 100%; font-family: var(--font); background: var(--bg); color: #1a1a1a; }
   .portal { display: flex; height: 100vh; overflow: hidden; }
 
   /* ── SIDEBAR ── */
-  .sidebar {
-    width: 290px; min-width: 290px;
-    background: var(--blue);
-    display: flex; flex-direction: column; overflow: hidden;
-  }
-  .sidebar-header {
-    padding: 20px 18px 16px;
-    border-bottom: 1px solid rgba(255,255,255,0.10);
-    background: var(--blue-dark);
-    flex-shrink: 0;
-  }
+  .sidebar { width: 290px; min-width: 290px; background: var(--blue); display: flex; flex-direction: column; overflow: hidden; }
+  .sidebar-header { padding: 18px 18px 14px; border-bottom: 1px solid rgba(255,255,255,0.10); background: var(--blue-dark); flex-shrink: 0; }
   .sidebar-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
   .sidebar-logo-img { height: 30px; object-fit: contain; }
-  .sidebar-subtitle { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.45); letter-spacing: .08em; text-transform: uppercase; }
+  .sidebar-subtitle { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.45); letter-spacing:.08em; text-transform: uppercase; }
   .sidebar-title { font-size: 13px; font-weight: 600; color: #fff; margin-top: 2px; }
+
+  .module-tabs { display: flex; gap: 6px; padding: 12px 14px; background: var(--blue-dark); border-bottom: 1px solid rgba(255,255,255,0.08); flex-shrink: 0; }
+  .tab-btn { flex: 1; padding: 7px 4px; border: none; border-radius: 6px; font-family: var(--font); font-size: 12px; font-weight: 600; cursor: pointer; letter-spacing:.04em; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55); transition: background .15s, color .15s; }
+  .tab-btn:hover { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.85); }
+  .tab-btn.active { background: var(--orange); color: #fff; }
 
   .sidebar-list { overflow-y: auto; flex: 1; padding: 6px 0 12px; }
   .sidebar-list::-webkit-scrollbar { width: 4px; }
   .sidebar-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
 
-  /* módulo acordeón */
   .module-block { border-bottom: 1px solid rgba(255,255,255,0.06); }
-
-  .module-header {
-    display: flex; align-items: center; gap: 10px;
-    padding: 10px 18px; cursor: pointer;
-    border-left: 3px solid transparent;
-    transition: background .12s;
-    user-select: none;
-  }
+  .module-header { display: flex; align-items: center; gap: 10px; padding: 10px 18px; cursor: pointer; border-left: 3px solid transparent; transition: background .12s; user-select: none; }
   .module-header:hover { background: rgba(255,255,255,0.07); }
   .module-header.active { background: rgba(244,121,32,0.15); border-left-color: var(--orange); }
-
   .mod-num { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35); min-width: 20px; flex-shrink: 0; }
   .module-header.active .mod-num { color: var(--orange); }
   .mod-label { font-size: 12px; color: rgba(255,255,255,0.72); line-height: 1.35; flex: 1; }
@@ -71,57 +53,94 @@
   .mod-arrow { font-size: 10px; color: rgba(255,255,255,0.35); transition: transform .2s; flex-shrink: 0; }
   .module-header.active .mod-arrow { transform: rotate(90deg); color: var(--orange); }
 
-  /* sub-lista */
   .module-videos { max-height: 0; overflow: hidden; transition: max-height .28s ease; background: rgba(0,0,0,0.18); }
   .module-videos.open { max-height: 600px; }
-
-  .sidebar-video-item {
-    display: flex; align-items: center; gap: 10px;
-    padding: 8px 18px 8px 36px; cursor: pointer;
-    border-left: 3px solid transparent;
-    transition: background .1s;
-  }
+  .sidebar-video-item { display: flex; align-items: center; gap: 10px; padding: 8px 18px 8px 36px; cursor: pointer; border-left: 3px solid transparent; transition: background .1s; }
   .sidebar-video-item:hover { background: rgba(255,255,255,0.06); }
   .sidebar-video-item.active-video { background: rgba(244,121,32,0.12); border-left-color: var(--orange); }
-
   .sv-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); flex-shrink: 0; transition: background .1s; }
-  .sidebar-video-item.active-video .sv-dot,
-  .sidebar-video-item:hover .sv-dot { background: var(--orange); }
-
+  .sidebar-video-item.active-video .sv-dot, .sidebar-video-item:hover .sv-dot { background: var(--orange); }
   .sv-label { font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.35; flex: 1; }
   .sidebar-video-item.active-video .sv-label { color: #fff; }
-
   .sidebar-empty { padding: 10px 18px 10px 36px; font-size: 11px; color: rgba(255,255,255,0.3); font-style: italic; }
 
   /* ── MAIN ── */
   .main { flex: 1; overflow-y: auto; display: flex; flex-direction: column; min-width: 0; }
-
-  .main-topbar {
-    background: var(--orange); padding: 10px 32px;
-    display: flex; align-items: center; gap: 6px; flex-shrink: 0;
-  }
+  .main-topbar { background: var(--orange); padding: 10px 32px; display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
   .topbar-crumb { font-size: 12px; color: rgba(255,255,255,0.8); }
   .topbar-sep { font-size: 12px; color: rgba(255,255,255,0.5); }
   .topbar-current { font-size: 12px; color: #fff; font-weight: 500; }
-
   .main-header { background: var(--bg-card); border-bottom: .5px solid var(--border); padding: 20px 32px 18px; flex-shrink: 0; }
   .main-title { font-size: 22px; font-weight: 600; color: var(--blue); }
-  .main-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+  .main-subtitle { font-size: 13px; color: #999; margin-top: 4px; }
+  .main-body { padding: 24px 32px; flex: 1; max-width: 900px; }
 
-  .main-body { padding: 24px 32px; flex: 1; max-width: 860px; }
+  /* ── PANTALLA DE BIENVENIDA ── */
+  .welcome-screen { display: none; }
+  .welcome-screen.visible { display: block; }
 
-  /* objetivo */
-  .objective-box {
-    background: var(--bg-card); border: .5px solid var(--border);
-    border-left: 4px solid var(--orange); border-radius: var(--radius-md);
-    padding: 16px 18px; margin-bottom: 28px;
-    display: flex; gap: 12px; align-items: flex-start;
+  .welcome-greeting {
+    font-size: 26px; font-weight: 600; color: var(--blue); margin-bottom: 6px;
   }
-  .obj-icon { width: 32px; height: 32px; background: var(--orange-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .obj-label { font-size: 10px; font-weight: 600; color: var(--orange-dark); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .06em; }
-  .obj-text { font-size: 13px; color: var(--text-primary); line-height: 1.6; }
+  .welcome-greeting span { color: var(--orange); }
+  .welcome-desc { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 32px; max-width: 540px; }
 
-  /* hero */
+  /* Cards de módulos */
+  .module-cards { display: flex; gap: 16px; margin-bottom: 36px; flex-wrap: wrap; }
+  .mod-card {
+    flex: 1; min-width: 160px;
+    background: var(--bg-card);
+    border: .5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 18px;
+    cursor: pointer;
+    transition: box-shadow .15s, transform .15s, border-color .15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .mod-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--card-color);
+  }
+  .mod-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.10); transform: translateY(-2px); border-color: var(--card-color); }
+  .mod-card-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 700; letter-spacing: .08em;
+    padding: 3px 10px; border-radius: 20px;
+    background: var(--card-bg); color: var(--card-color);
+    margin-bottom: 12px;
+  }
+  .mod-card-count { font-size: 32px; font-weight: 600; color: var(--blue); line-height: 1; }
+  .mod-card-label { font-size: 12px; color: #999; margin-top: 2px; }
+  .mod-card-desc { font-size: 12px; color: #555; margin-top: 10px; line-height: 1.5; }
+  .mod-card-action {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 600; color: var(--card-color);
+    margin-top: 14px;
+  }
+  .mod-card-action svg { transition: transform .15s; }
+  .mod-card:hover .mod-card-action svg { transform: translateX(3px); }
+
+  /* Instrucciones */
+  .how-to { background: var(--bg-card); border: .5px solid var(--border); border-radius: var(--radius-lg); padding: 20px 24px; }
+  .how-to-title { font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .how-to-title svg { flex-shrink: 0; }
+  .how-to-steps { display: flex; flex-direction: column; gap: 10px; }
+  .how-step { display: flex; align-items: flex-start; gap: 12px; }
+  .step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--orange); color: #fff; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-text { font-size: 13px; color: #555; line-height: 1.5; }
+  .step-text strong { color: #1a1a1a; }
+
+  /* ── CONTENIDO DE MÓDULO ── */
+  .module-content { display: none; }
+  .module-content.visible { display: block; }
+
+  .objective-box { background: var(--bg-card); border: .5px solid var(--border); border-left: 4px solid var(--orange); border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 28px; display: flex; gap: 12px; align-items: flex-start; }
+  .obj-icon { width: 32px; height: 32px; background: var(--orange-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .obj-label { font-size: 10px; font-weight: 600; color: var(--orange-dark); margin-bottom: 4px; text-transform: uppercase; letter-spacing:.06em; }
+  .obj-text { font-size: 13px; color: #1a1a1a; line-height: 1.6; }
+
   .video-hero { background: var(--bg-card); border: .5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px; display: none; }
   .video-hero.visible { display: block; }
   .video-hero-top { background: var(--blue); padding: 16px 20px; display: flex; align-items: center; gap: 14px; }
@@ -133,33 +152,25 @@
   .hero-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--orange); color: #fff; font-size: 12px; font-weight: 600; padding: 9px 16px; border-radius: var(--radius-md); text-decoration: none; transition: background .12s; flex-shrink: 0; }
   .hero-btn:hover { background: var(--orange-dark); }
 
-  /* lista */
   .section-title { font-size: 14px; font-weight: 600; color: var(--blue); margin-bottom: 12px; }
   .video-list { display: flex; flex-direction: column; gap: 8px; }
-
-  .video-card {
-    background: var(--bg-card); border: .5px solid var(--border); border-radius: var(--radius-md);
-    padding: 12px 16px; display: flex; align-items: center; gap: 12px;
-    cursor: pointer; text-decoration: none;
-    transition: border-color .12s, box-shadow .12s;
-  }
+  .video-card { background: var(--bg-card); border: .5px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer; text-decoration: none; transition: border-color .12s, box-shadow .12s; }
   .video-card:hover, .video-card.selected { border-color: var(--orange); box-shadow: 0 2px 8px rgba(244,121,32,0.12); }
   .video-card.selected { background: var(--orange-light); }
-
-  .vc-num { width: 28px; height: 28px; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--text-muted); flex-shrink: 0; transition: background .12s, color .12s, border-color .12s; }
+  .vc-num { width: 28px; height: 28px; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #999; flex-shrink: 0; transition: background .12s, color .12s, border-color .12s; }
   .video-card:hover .vc-num, .video-card.selected .vc-num { background: var(--orange); border-color: var(--orange); color: #fff; }
-  .vc-name { font-size: 13px; color: var(--text-primary); line-height: 1.4; flex: 1; }
+  .vc-name { font-size: 13px; color: #1a1a1a; line-height: 1.4; flex: 1; }
   .vc-arrow { font-size: 16px; color: var(--orange); opacity: 0; transition: opacity .12s; }
   .video-card:hover .vc-arrow, .video-card.selected .vc-arrow { opacity: 1; }
 
-  /* vacío */
-  .empty-state { text-align: center; padding: 56px 24px; color: var(--text-muted); font-size: 13px; line-height: 1.7; background: var(--bg-card); border: 1px dashed var(--border); border-radius: var(--radius-lg); }
+  .empty-state { text-align: center; padding: 56px 24px; color: #999; font-size: 13px; line-height: 1.7; background: var(--bg-card); border: 1px dashed var(--border); border-radius: var(--radius-lg); }
   .empty-icon { font-size: 32px; margin-bottom: 12px; }
 </style>
 </head>
 <body>
 <div class="portal">
 
+  <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="sidebar-header">
       <div class="sidebar-logo-row">
@@ -170,48 +181,131 @@
       <div class="sidebar-subtitle">Material de apoyo</div>
       <div class="sidebar-title">Tutoriales SAP</div>
     </div>
+    <div class="module-tabs">
+      <button class="tab-btn active" data-tab="SD" onclick="switchTab('SD')">SD</button>
+      <button class="tab-btn"        data-tab="FI" onclick="switchTab('FI')">FI</button>
+      <button class="tab-btn"        data-tab="MM" onclick="switchTab('MM')">MM</button>
+    </div>
     <div class="sidebar-list" id="sidebarList"></div>
   </div>
 
+  <!-- MAIN -->
   <div class="main">
     <div class="main-topbar">
       <span class="topbar-crumb">Inicio</span>
       <span class="topbar-sep">›</span>
       <span class="topbar-crumb">Material de apoyo SAP</span>
-      <span class="topbar-sep">›</span>
+      <span id="topbarSep2" class="topbar-sep" style="display:none">›</span>
       <span class="topbar-current" id="topbarCurrent"></span>
     </div>
     <div class="main-header">
-      <div class="main-title" id="mainTitle"></div>
+      <div class="main-title"    id="mainTitle"></div>
       <div class="main-subtitle" id="mainSubtitle"></div>
     </div>
+
     <div class="main-body">
-      <div class="objective-box">
-        <div class="obj-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="6" stroke="#F47920" stroke-width="1.5"/>
-            <path d="M5 8l2 2 4-4" stroke="#F47920" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div>
-          <div class="obj-label">Objetivo</div>
-          <div class="obj-text" id="objText"></div>
-        </div>
-      </div>
 
-      <div class="video-hero" id="videoHero">
-        <div class="video-hero-top">
-          <div class="hero-play"><div class="hero-tri"></div></div>
-          <div class="hero-info">
-            <div class="hero-title" id="heroTitle"></div>
-            <div class="hero-meta" id="heroMeta"></div>
+      <!-- ── PANTALLA DE BIENVENIDA ── -->
+      <div class="welcome-screen" id="welcomeScreen">
+        <p class="welcome-greeting">¿Qué te gustaría <span>aprender hoy?</span></p>
+        <p class="welcome-desc">Explora los tutoriales SAP organizados por módulo. Selecciona un macroproceso del menú lateral para ver sus videos y objetivos.</p>
+
+        <!-- Cards de módulos -->
+        <div class="module-cards">
+          <div class="mod-card" style="--card-color:#F47920;--card-bg:#FEF0E6" onclick="switchTab('SD')">
+            <div class="mod-card-tag">SD</div>
+            <div class="mod-card-count">24</div>
+            <div class="mod-card-label">macroprocesos</div>
+            <div class="mod-card-desc">Ventas y Distribución — pedidos, facturación, devoluciones y más.</div>
+            <div class="mod-card-action">
+              Explorar SD
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#F47920" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
           </div>
-          <a class="hero-btn" id="heroBtn" href="#" target="_blank" rel="noopener">▶ Ver video</a>
+
+          <div class="mod-card" style="--card-color:#2E5FA3;--card-bg:#E8EDF5" onclick="switchTab('FI')">
+            <div class="mod-card-tag">FI</div>
+            <div class="mod-card-count">13</div>
+            <div class="mod-card-label">macroprocesos</div>
+            <div class="mod-card-desc">Finanzas — caja chica, facturación, crédito y programa de lealtad.</div>
+            <div class="mod-card-action">
+              Explorar FI
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#2E5FA3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <div class="mod-card" style="--card-color:#1B7A4A;--card-bg:#E6F4ED" onclick="switchTab('MM')">
+            <div class="mod-card-tag">MM</div>
+            <div class="mod-card-count">32</div>
+            <div class="mod-card-label">macroprocesos</div>
+            <div class="mod-card-desc">Gestión de Materiales — MRP, inventarios, almacén y compras.</div>
+            <div class="mod-card-action">
+              Explorar MM
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#1B7A4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instrucciones -->
+        <div class="how-to">
+          <div class="how-to-title">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6" stroke="#1B3A6B" stroke-width="1.5"/>
+              <path d="M8 5v4M8 11v.5" stroke="#1B3A6B" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            ¿Cómo navegar este portal?
+          </div>
+          <div class="how-to-steps">
+            <div class="how-step">
+              <div class="step-num">1</div>
+              <div class="step-text">Elige un <strong>módulo SAP</strong> (SD, FI o MM) usando los botones del menú lateral o las tarjetas de arriba.</div>
+            </div>
+            <div class="how-step">
+              <div class="step-num">2</div>
+              <div class="step-text">Haz clic en un <strong>macroproceso</strong> del menú lateral para ver sus videos disponibles y su objetivo.</div>
+            </div>
+            <div class="how-step">
+              <div class="step-num">3</div>
+              <div class="step-text">Selecciona un <strong>video</strong> de la lista para verlo directamente en SharePoint.</div>
+            </div>
+            <div class="how-step">
+              <div class="step-num">4</div>
+              <div class="step-text">Vuelve a hacer clic en el macroproceso abierto para <strong>cerrarlo</strong> y navegar al siguiente.</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div id="videosSectionTitle" class="section-title"></div>
-      <div class="video-list" id="videoList"></div>
+      <!-- ── CONTENIDO DE MÓDULO ── -->
+      <div class="module-content" id="moduleContent">
+        <div class="objective-box">
+          <div class="obj-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="6" stroke="#F47920" stroke-width="1.5"/>
+              <path d="M5 8l2 2 4-4" stroke="#F47920" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="obj-label">Objetivo</div>
+            <div class="obj-text" id="objText"></div>
+          </div>
+        </div>
+
+        <div class="video-hero" id="videoHero">
+          <div class="video-hero-top">
+            <div class="hero-play"><div class="hero-tri"></div></div>
+            <div class="hero-info">
+              <div class="hero-title" id="heroTitle"></div>
+              <div class="hero-meta"  id="heroMeta"></div>
+            </div>
+            <a class="hero-btn" id="heroBtn" href="#" target="_blank" rel="noopener">▶ Ver video</a>
+          </div>
+        </div>
+
+        <div id="videosSectionTitle" class="section-title"></div>
+        <div class="video-list" id="videoList"></div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -221,47 +315,102 @@
    ✏️  CONFIGURACIÓN DE MÓDULOS Y VIDEOS
    Para agregar videos:
    { name: "Nombre del video", url: "https://empresa.sharepoint.com/..." }
+   Si un módulo no tiene videos aún, deja videos: []
    ===================================================== */
-const modules = [
-  {
-    num:"01", label:"Carga masiva de clientes",
-    obj:"Aprenderás a ejecutar la carga masiva de clientes en SAP, incluyendo visualización de interlocutores, RFC, CURP y condiciones de pago.",
-    videos:[
-      {name:"Visualiza clientes y sus interlocutores en SAP", url:"PEGA_AQUI_EL_LINK_DE_SHAREPOINT"},
-      {name:"¿Qué es el interlocutor de un cliente y cómo encontrarlos en SAP?", url:"PEGA_AQUI_EL_LINK_DE_SHAREPOINT"},
-      {name:"Visualizar el RFC, el CURP o el NIF de un cliente en SAP", url:"PEGA_AQUI_EL_LINK_DE_SHAREPOINT"},
-      {name:"¿Cómo conocer la condición de pago del cliente en SAP?", url:"PEGA_AQUI_EL_LINK_DE_SHAREPOINT"}
-    ]
-  },
-  {num:"02",label:"Gestión de precios",obj:"Comprenderás cómo gestionar y consultar precios dentro del sistema SAP.",videos:[]},
-  {num:"03",label:"Venta de mercancía con inventario",obj:"Procesarás ventas de mercancía con control de inventario en SAP.",videos:[]},
-  {num:"04",label:"Venta con entrega en sucursal",obj:"Gestionarás ventas con entrega directa en sucursal usando SAP.",videos:[]},
-  {num:"05",label:"Venta terceros POS",obj:"Realizarás ventas a terceros a través del punto de venta en SAP.",videos:[]},
-  {num:"06",label:"Vta 3r SAP - Solped / Traspaso",obj:"Ejecutarás el proceso de venta a terceros con solicitud de pedido y traspaso en SAP.",videos:[]},
-  {num:"07",label:"Vta 3r SAP - Solped / Compra Pro",obj:"Gestionarás ventas a terceros con solicitud de pedido y compra pro en SAP.",videos:[]},
-  {num:"08",label:"Traspasos directos MM con CP",obj:"Realizarás traspasos directos en gestión de materiales con centro de producción.",videos:[]},
-  {num:"09",label:"Facturación anticipada",obj:"Procesarás facturas anticipadas dentro del flujo de ventas en SAP.",videos:[]},
-  {num:"10",label:"Venta exportación con inventario",obj:"Gestionarás ventas de exportación con control de inventario en SAP.",videos:[]},
-  {num:"11",label:"Vta 3r Expo - Solped / Traslado",obj:"Ejecutarás ventas a terceros de exportación con solicitud de pedido y traslado.",videos:[]},
-  {num:"12",label:"Vta 3r Expo - Solped / Compras",obj:"Gestionarás ventas a terceros de exportación con solicitud de pedido y compras.",videos:[]},
-  {num:"13",label:"Pedidos muestra",obj:"Crearás y gestionarás pedidos de muestra en SAP correctamente.",videos:[]},
-  {num:"14",label:"Existencia ficticia",obj:"Comprenderás y trabajarás con existencias ficticias en el sistema SAP.",videos:[]},
-  {num:"15",label:"Devoluciones INV con referencia",obj:"Procesarás devoluciones de inventario con referencia a documento original.",videos:[]},
-  {num:"16",label:"Devolución sin referencia",obj:"Gestionarás devoluciones sin referencia a documento en SAP.",videos:[]},
-  {num:"17",label:"NC por bonificación",obj:"Emitirás notas de crédito por bonificación dentro del sistema SAP.",videos:[]},
-  {num:"18",label:"Venta con anticipos",obj:"Procesarás ventas que incluyen anticipos o pagos adelantados en SAP.",videos:[]},
-  {num:"19",label:"Cancelaciones",obj:"Ejecutarás cancelaciones de documentos de venta en SAP de forma correcta.",videos:[]},
-  {num:"20",label:"Refacturación",obj:"Realizarás el proceso de refacturación de documentos en SAP.",videos:[]},
-  {num:"21",label:"Rebates",obj:"Configurarás y gestionarás acuerdos de rebates con clientes en SAP.",videos:[]},
-  {num:"22",label:"Intercompany",obj:"Gestionarás transacciones intercompany entre sociedades en SAP.",videos:[]},
-  {num:"23",label:"Catálogos",obj:"Administrarás y utilizarás catálogos de materiales en SAP.",videos:[]},
-  {num:"24",label:"Reg. Info cliente / material",obj:"Registrarás y consultarás información de clientes y materiales en SAP.",videos:[]}
-];
+const data = {
+  SD: [
+    { num:"01", label:"Carga masiva de clientes",         obj:"Aprenderás a ejecutar la carga masiva de clientes en SAP, incluyendo visualización de interlocutores, RFC, CURP y condiciones de pago.", videos:[
+      {name:"Visualiza clientes y sus interlocutores en SAP",                     url:"PEGA_LINK_SHAREPOINT"},
+      {name:"¿Qué es el interlocutor de un cliente y cómo encontrarlos en SAP?",  url:"PEGA_LINK_SHAREPOINT"},
+      {name:"Visualizar el RFC, el CURP o el NIF de un cliente en SAP",           url:"PEGA_LINK_SHAREPOINT"},
+      {name:"¿Cómo conocer la condición de pago del cliente en SAP?",             url:"PEGA_LINK_SHAREPOINT"}
+    ]},
+    { num:"02", label:"Gestión de precios",                obj:"Comprenderás cómo gestionar y consultar precios dentro del sistema SAP.", videos:[] },
+    { num:"03", label:"Venta de mercancía con inventario", obj:"Procesarás ventas de mercancía con control de inventario en SAP.", videos:[] },
+    { num:"04", label:"Venta con entrega en sucursal",     obj:"Gestionarás ventas con entrega directa en sucursal usando SAP.", videos:[] },
+    { num:"05", label:"Venta terceros POS",                obj:"Realizarás ventas a terceros a través del punto de venta en SAP.", videos:[] },
+    { num:"06", label:"Vta 3r SAP - Solped / Traspaso",   obj:"Ejecutarás el proceso de venta a terceros con solicitud de pedido y traspaso en SAP.", videos:[] },
+    { num:"07", label:"Vta 3r SAP - Solped / Compra Pro", obj:"Gestionarás ventas a terceros con solicitud de pedido y compra pro en SAP.", videos:[] },
+    { num:"08", label:"Traspasos directos MM con CP",      obj:"Realizarás traspasos directos en gestión de materiales con centro de producción.", videos:[] },
+    { num:"09", label:"Facturación anticipada",            obj:"Procesarás facturas anticipadas dentro del flujo de ventas en SAP.", videos:[] },
+    { num:"10", label:"Venta exportación con inventario",  obj:"Gestionarás ventas de exportación con control de inventario en SAP.", videos:[] },
+    { num:"11", label:"Vta 3r Expo - Solped / Traslado",  obj:"Ejecutarás ventas a terceros de exportación con solicitud de pedido y traslado.", videos:[] },
+    { num:"12", label:"Vta 3r Expo - Solped / Compras",   obj:"Gestionarás ventas a terceros de exportación con solicitud de pedido y compras.", videos:[] },
+    { num:"13", label:"Pedidos muestra",                   obj:"Crearás y gestionarás pedidos de muestra en SAP correctamente.", videos:[] },
+    { num:"14", label:"Existencia ficticia",               obj:"Comprenderás y trabajarás con existencias ficticias en el sistema SAP.", videos:[] },
+    { num:"15", label:"Devoluciones INV con referencia",   obj:"Procesarás devoluciones de inventario con referencia a documento original.", videos:[] },
+    { num:"16", label:"Devolución sin referencia",         obj:"Gestionarás devoluciones sin referencia a documento en SAP.", videos:[] },
+    { num:"17", label:"NC por bonificación",               obj:"Emitirás notas de crédito por bonificación dentro del sistema SAP.", videos:[] },
+    { num:"18", label:"Venta con anticipos",               obj:"Procesarás ventas que incluyen anticipos o pagos adelantados en SAP.", videos:[] },
+    { num:"19", label:"Cancelaciones",                     obj:"Ejecutarás cancelaciones de documentos de venta en SAP de forma correcta.", videos:[] },
+    { num:"20", label:"Refacturación",                     obj:"Realizarás el proceso de refacturación de documentos en SAP.", videos:[] },
+    { num:"21", label:"Rebates",                           obj:"Configurarás y gestionarás acuerdos de rebates con clientes en SAP.", videos:[] },
+    { num:"22", label:"Intercompany",                      obj:"Gestionarás transacciones intercompany entre sociedades en SAP.", videos:[] },
+    { num:"23", label:"Catálogos",                         obj:"Administrarás y utilizarás catálogos de materiales en SAP.", videos:[] },
+    { num:"24", label:"Reg. Info cliente / material",      obj:"Registrarás y consultarás información de clientes y materiales en SAP.", videos:[] }
+  ],
+  FI: [
+    { num:"01", label:"CH Fondeo inicial",                 obj:"Ejecutarás el proceso de fondeo inicial de caja chica en SAP.", videos:[] },
+    { num:"02", label:"CH Operación gasto 1",              obj:"Registrarás operaciones de gasto de caja chica (tipo 1) en SAP.", videos:[] },
+    { num:"03", label:"CH Operación gasto 2",              obj:"Registrarás operaciones de gasto de caja chica (tipo 2) en SAP.", videos:[] },
+    { num:"04", label:"CH Operación gasto 3",              obj:"Registrarás operaciones de gasto de caja chica (tipo 3) en SAP.", videos:[] },
+    { num:"05", label:"CH Reposición gts. aprob.",         obj:"Ejecutarás el proceso de reposición de gastos aprobados de caja chica en SAP.", videos:[] },
+    { num:"06", label:"CH Operación CxC",                  obj:"Gestionarás operaciones de cuentas por cobrar de caja chica en SAP.", videos:[] },
+    { num:"07", label:"P. Lealtad pasivo y expirac.",      obj:"Administrarás el pasivo y expiración del programa de lealtad en SAP.", videos:[] },
+    { num:"08", label:"P. Ingreso canje P. Lealtad",       obj:"Registrarás el ingreso por canje de puntos del programa de lealtad en SAP.", videos:[] },
+    { num:"09", label:"Fact. crédito SD",                  obj:"Procesarás la facturación a crédito desde el módulo SD en SAP.", videos:[] },
+    { num:"10", label:"Consulta crédito SD",               obj:"Consultarás el estado de crédito de clientes desde el módulo SD en SAP.", videos:[] },
+    { num:"11", label:"Factura contado FI",                obj:"Generarás facturas de contado dentro del módulo FI en SAP.", videos:[] },
+    { num:"12", label:"Sust. Cebe 3032 FI",                obj:"Ejecutarás la sustitución del centro de beneficio 3032 en el módulo FI.", videos:[] },
+    { num:"13", label:"Sust. Cebe 3032 SD",                obj:"Ejecutarás la sustitución del centro de beneficio 3032 en el módulo SD.", videos:[] }
+  ],
+  MM: [
+    { num:"01", label:"Creación y Mod. Mats. Manual",      obj:"Crearás y modificarás materiales de forma manual en SAP MM.", videos:[] },
+    { num:"02", label:"Creación y mod. Masiva Mats.",      obj:"Realizarás la creación y modificación masiva de materiales en SAP.", videos:[] },
+    { num:"03", label:"Carga datos MRP y Pronóstico",      obj:"Cargarás los datos de MRP y pronóstico de demanda en SAP.", videos:[] },
+    { num:"04", label:"Validación datos maestros",         obj:"Validarás la integridad de los datos maestros en SAP MM.", videos:[] },
+    { num:"05", label:"Proceso de pronóstico",             obj:"Ejecutarás el proceso de pronóstico de demanda en SAP.", videos:[] },
+    { num:"06", label:"Warning de picos y valles",         obj:"Interpretarás y gestionarás las alertas de picos y valles en el pronóstico SAP.", videos:[] },
+    { num:"07", label:"Lógica de adelanto de pedidos",     obj:"Comprenderás y aplicarás la lógica de adelanto de pedidos en SAP.", videos:[] },
+    { num:"08", label:"Ejec. MRP y Ctl x Calendario",      obj:"Ejecutarás el MRP y controlarás los resultados por calendario en SAP.", videos:[] },
+    { num:"09", label:"Conv. ord. prev. a solpeds",        obj:"Convertirás órdenes previsionales a solicitudes de pedido en SAP.", videos:[] },
+    { num:"10", label:"Creación Aut. OC Traslado",         obj:"Crearás de forma automática órdenes de compra de traslado en SAP.", videos:[] },
+    { num:"11", label:"Liberación de OC y envío aut.",     obj:"Liberarás órdenes de compra y gestionarás el envío automático en SAP.", videos:[] },
+    { num:"12", label:"Solped desde Venta por Terceros",   obj:"Generarás solicitudes de pedido desde el proceso de venta por terceros en SAP.", videos:[] },
+    { num:"13", label:"Solped desde MRP",                  obj:"Crearás solicitudes de pedido generadas por el MRP en SAP.", videos:[] },
+    { num:"14", label:"Identif. Solpeds no Asignadas",     obj:"Identificarás y gestionarás las solicitudes de pedido sin asignar en SAP.", videos:[] },
+    { num:"15", label:"Creación automática OC (ME59N)",    obj:"Ejecutarás la creación automática de órdenes de compra mediante ME59N en SAP.", videos:[] },
+    { num:"16", label:"Asign. Exist. y crea ped.",         obj:"Asignarás existencias y crearás pedidos en SAP MM.", videos:[] },
+    { num:"17", label:"Ped. Tras. Asignación manual",      obj:"Realizarás la asignación manual de pedidos de traslado en SAP.", videos:[] },
+    { num:"18", label:"Picking HH",                        obj:"Ejecutarás el proceso de picking con handhelds en SAP WM.", videos:[] },
+    { num:"19", label:"Salida de mercancía",               obj:"Registrarás la salida de mercancía en SAP MM.", videos:[] },
+    { num:"20", label:"Entrada de mercancía",              obj:"Registrarás la entrada de mercancía en SAP MM.", videos:[] },
+    { num:"21", label:"Carga dispo. y cre. PO GR",         obj:"Cargarás la disponibilidad y crearás PO/GR en SAP.", videos:[] },
+    { num:"22", label:"MV Asig. stock aparta Cliente",     obj:"Ejecutarás el movimiento de asignación de stock apartado para cliente en SAP.", videos:[] },
+    { num:"23", label:"MV Asig. stock aparta Suc.",        obj:"Ejecutarás el movimiento de asignación de stock apartado para sucursal en SAP.", videos:[] },
+    { num:"24", label:"Cierre día Invent. Virtual",        obj:"Realizarás el cierre diario del inventario virtual en SAP.", videos:[] },
+    { num:"25", label:"Surt. Entregas en SAP sin HH",      obj:"Ejecutarás el surtido de entregas en SAP sin uso de handhelds.", videos:[] },
+    { num:"26", label:"Surtido de entregas con HH",        obj:"Ejecutarás el surtido de entregas en SAP utilizando handhelds.", videos:[] },
+    { num:"27", label:"Otros Movos. de almacén Ext.",      obj:"Registrarás otros movimientos de almacén externos en SAP MM.", videos:[] },
+    { num:"28", label:"Intercompany",                      obj:"Gestionarás transacciones intercompany en SAP MM.", videos:[] },
+    { num:"29", label:"Importaciones y Control Pedim.",    obj:"Administrarás el proceso de importaciones y control de pedimentos en SAP.", videos:[] },
+    { num:"30", label:"Inventario físico en SAP",          obj:"Realizarás el proceso completo de inventario físico en SAP.", videos:[] },
+    { num:"31", label:"Ajuste de Inventario por int.",     obj:"Ejecutarás ajustes de inventario por interfaz en SAP.", videos:[] },
+    { num:"32", label:"Proceso Consignación",              obj:"Gestionarás el proceso completo de consignación en SAP MM.", videos:[] }
+  ]
+};
 
+/* ── ESTADO ── */
+let activeTab    = 'SD';
+let activeModIdx = -1;
+let activeVidIdx = -1;
+
+/* ── REFS ── */
 const sidebarList        = document.getElementById('sidebarList');
 const mainTitle          = document.getElementById('mainTitle');
 const mainSubtitle       = document.getElementById('mainSubtitle');
 const topbarCurrent      = document.getElementById('topbarCurrent');
+const topbarSep2         = document.getElementById('topbarSep2');
 const objText            = document.getElementById('objText');
 const videosSectionTitle = document.getElementById('videosSectionTitle');
 const videoList          = document.getElementById('videoList');
@@ -269,16 +418,35 @@ const videoHero          = document.getElementById('videoHero');
 const heroTitle          = document.getElementById('heroTitle');
 const heroMeta           = document.getElementById('heroMeta');
 const heroBtn            = document.getElementById('heroBtn');
+const welcomeScreen      = document.getElementById('welcomeScreen');
+const moduleContent      = document.getElementById('moduleContent');
 
-let activeModIdx = 0;
-let activeVidIdx = -1;
+/* ── MOSTRAR / OCULTAR PANTALLAS ── */
+function showWelcome() {
+  welcomeScreen.classList.add('visible');
+  moduleContent.classList.remove('visible');
+  mainTitle.textContent     = 'Material de apoyo SAP';
+  mainSubtitle.textContent  = `Módulo ${activeTab} · ${data[activeTab].length} macroprocesos disponibles`;
+  topbarCurrent.textContent = '';
+  topbarSep2.style.display  = 'none';
+}
 
-function renderMain(mod, vidIdx = -1) {
+function showModule(mod) {
+  welcomeScreen.classList.remove('visible');
+  moduleContent.classList.add('visible');
   mainTitle.textContent     = mod.label;
+  mainSubtitle.textContent  = mod.videos.length > 0
+    ? `${mod.videos.length} video${mod.videos.length>1?'s':''} disponible${mod.videos.length>1?'s':''}`
+    : 'Videos próximamente';
   topbarCurrent.textContent = mod.label;
-  objText.textContent       = mod.obj;
+  topbarSep2.style.display  = 'inline';
+}
+
+/* ── RENDER CONTENIDO ── */
+function renderMain(mod, vidIdx = -1) {
+  showModule(mod);
+  objText.textContent = mod.obj;
   const count = mod.videos.length;
-  mainSubtitle.textContent  = count > 0 ? `${count} video${count>1?'s':''} disponible${count>1?'s':''}` : 'Videos próximamente';
 
   if (vidIdx >= 0 && mod.videos[vidIdx]) {
     const v = mod.videos[vidIdx];
@@ -305,7 +473,7 @@ function renderMain(mod, vidIdx = -1) {
         if (activeVidIdx !== idx) {
           e.preventDefault();
           activeVidIdx = idx;
-          renderMain(modules[activeModIdx], activeVidIdx);
+          renderMain(data[activeTab][activeModIdx], activeVidIdx);
           syncSidebarVideos();
         }
       });
@@ -320,51 +488,71 @@ function syncSidebarVideos() {
   document.querySelectorAll('.sidebar-video-item').forEach(el => {
     el.classList.toggle('active-video',
       parseInt(el.dataset.modidx) === activeModIdx &&
-      parseInt(el.dataset.vidx)  === activeVidIdx);
+      parseInt(el.dataset.vidx)   === activeVidIdx);
   });
 }
 
-modules.forEach((mod, mi) => {
-  const block  = document.createElement('div');
-  block.className = 'module-block';
+/* ── CONSTRUYE SIDEBAR ── */
+function buildSidebar(tab) {
+  sidebarList.innerHTML = '';
+  data[tab].forEach((mod, mi) => {
+    const block  = document.createElement('div');
+    block.className = 'module-block';
 
-  const header = document.createElement('div');
-  header.className = 'module-header' + (mi===0 ? ' active' : '');
-  header.innerHTML = `
-    <span class="mod-num">${mod.num}</span>
-    <span class="mod-label">${mod.label}</span>
-    ${mod.videos.length > 0 ? `<span class="mod-badge">${mod.videos.length}</span>` : ''}
-    <span class="mod-arrow">▶</span>`;
+    const header = document.createElement('div');
+    header.className = 'module-header' + (mi === activeModIdx ? ' active' : '');
+    header.innerHTML = `
+      <span class="mod-num">${mod.num}</span>
+      <span class="mod-label">${mod.label}</span>
+      ${mod.videos.length > 0 ? `<span class="mod-badge">${mod.videos.length}</span>` : ''}
+      <span class="mod-arrow">▶</span>`;
 
-  const subList = document.createElement('div');
-  subList.className = 'module-videos' + (mi===0 ? ' open' : '');
+    const subList = document.createElement('div');
+    subList.className = 'module-videos' + (mi === activeModIdx ? ' open' : '');
 
-  if (mod.videos.length > 0) {
-    mod.videos.forEach((v, vi) => {
-      const item = document.createElement('div');
-      item.className = 'sidebar-video-item';
-      item.dataset.modidx = mi;
-      item.dataset.vidx   = vi;
-      item.innerHTML = `<span class="sv-dot"></span><span class="sv-label">${v.name}</span>`;
-      item.addEventListener('click', () => {
-        selectModule(mi);
-        activeVidIdx = vi;
-        renderMain(modules[mi], vi);
-        syncSidebarVideos();
+    if (mod.videos.length > 0) {
+      mod.videos.forEach((v, vi) => {
+        const item = document.createElement('div');
+        item.className = 'sidebar-video-item' +
+          (mi === activeModIdx && vi === activeVidIdx ? ' active-video' : '');
+        item.dataset.modidx = mi;
+        item.dataset.vidx   = vi;
+        item.innerHTML = `<span class="sv-dot"></span><span class="sv-label">${v.name}</span>`;
+        item.addEventListener('click', () => {
+          if (activeModIdx !== mi) openModule(mi);
+          activeVidIdx = vi;
+          renderMain(data[activeTab][mi], vi);
+          syncSidebarVideos();
+        });
+        subList.appendChild(item);
       });
-      subList.appendChild(item);
-    });
+    } else {
+      subList.innerHTML = `<div class="sidebar-empty">Sin videos aún</div>`;
+    }
+
+    header.addEventListener('click', () => toggleModule(mi));
+    block.appendChild(header);
+    block.appendChild(subList);
+    sidebarList.appendChild(block);
+  });
+}
+
+/* ── TOGGLE ── */
+function toggleModule(mi) {
+  const isOpen = activeModIdx === mi;
+  document.querySelectorAll('.module-header').forEach(h => h.classList.remove('active'));
+  document.querySelectorAll('.module-videos').forEach(v => v.classList.remove('open'));
+
+  if (isOpen) {
+    activeModIdx = -1;
+    activeVidIdx = -1;
+    showWelcome();
   } else {
-    subList.innerHTML = `<div class="sidebar-empty">Sin videos aún</div>`;
+    openModule(mi);
   }
+}
 
-  header.addEventListener('click', () => selectModule(mi));
-  block.appendChild(header);
-  block.appendChild(subList);
-  sidebarList.appendChild(block);
-});
-
-function selectModule(mi) {
+function openModule(mi) {
   document.querySelectorAll('.module-header').forEach(h => h.classList.remove('active'));
   document.querySelectorAll('.module-videos').forEach(v => v.classList.remove('open'));
   const headers  = document.querySelectorAll('.module-header');
@@ -373,12 +561,23 @@ function selectModule(mi) {
   subLists[mi].classList.add('open');
   activeModIdx = mi;
   activeVidIdx = -1;
-  renderMain(modules[mi]);
+  renderMain(data[activeTab][mi]);
   syncSidebarVideos();
   headers[mi].scrollIntoView({ block:'nearest', behavior:'smooth' });
 }
 
-renderMain(modules[0]);
+/* ── SWITCH TAB ── */
+function switchTab(tab) {
+  activeTab    = tab;
+  activeModIdx = -1;
+  activeVidIdx = -1;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  buildSidebar(tab);
+  showWelcome();
+}
+
+/* ── INIT ── */
+switchTab('SD');
 </script>
 </body>
 </html>
